@@ -7,7 +7,7 @@ if [ -z $1 ]
 fi
 ## fix permissions
 chmod g=rwx * -R
-## copy source
+## copy source (always exclude .git)
 # copy from dev to test
 rsync -a dev/ test --exclude=admin --exclude=.git --delete
 # copy from dev to woTP exclude admin
@@ -35,3 +35,5 @@ do
   git push origin master -f --quiet
   cd ../
 done
+## count lines of code
+cloc standalone --quiet
